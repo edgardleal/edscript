@@ -4,3 +4,10 @@
 target
 expression_parser/
 clib/
+*.jar
+*.class
+*.log*
+*.db
+java/sql/
+java/cargas/
+java/conn/
