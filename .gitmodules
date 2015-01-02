@@ -1,0 +1,6 @@
+[submodule "clib"]
+	path = clib
+	url = https://github.com/edgardleal/clib.git
+[submodule "expression_parser"]
+	path = expression_parser
+	url = https://github.com/edgardleal/expression_parser.git
