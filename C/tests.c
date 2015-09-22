@@ -8,11 +8,15 @@
 #include "hashmap.c"
 #include "expression_parser/code/expression_parser.c"
 #include "mysql_connector.c"
-#include "clib/src/stringutil.c"
 
 void test_expression(char *expression, double expected)
 {
     ok(parse_expression(expression) == expected, "Expression: %s, expected: %f", expression, expected);
+}
+
+void _split(char *text , char delimiter, char ***list)
+{
+
 }
 
 int main(int argc, char *argv[])
@@ -27,8 +31,11 @@ int main(int argc, char *argv[])
     
     new_test_case("StringUtils\n");
     char **_list;
-    string_split("mysql:host=teste;db=banco\0\0", ':', &_list);
+    _list = string_split("mysql:host=teste;db=banco\0", ":", _list);
+    printf("Valor comparado: [%s]\n", _list[0]);
     ok(strcmp("mysql", _list[0]) == 0, "%s", "Conteudo a primeira parte");
+
+    free(_list);
 
     new_test_case("Mysql");
     if(!file_exists("connection.test"))

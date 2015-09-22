@@ -4,9 +4,10 @@
 
 
 
-struct st_command{
+typedef struct st_command{
   int line; 
   int level;
+  struct st_command (*alloc)(void);
   char **parameters;
   char *function_name;
   struct st_command *childrens;
@@ -21,8 +22,7 @@ int _print(struct st_command *c, char *parameters[]);
 struct st_command *commands;
 int commands_count = 0;
 
-
-void append_command(struct st_command *c)
+void append_command(command *c)
 {
     commands_count = commands_count + 1;
     if(commands_count == 0)
