@@ -1,5 +1,4 @@
 
-
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -9,29 +8,31 @@
 #include "stringhash.c"
 #include "commands.c"
 
-int func(char *line)
+int
+func (char *line)
 {
-    printf("Linha: [%s]\n", line);
-    return 0;
+  printf ("Linha: [%s]\n", line);
+  return (0);
 }
 
-int main(int argc, char *argv[])
+int
+main (int argc, char *argv[])
 {
-    if(argc > 1)
+  if (argc > 1)
     {
-        if(strcmp(argv[1], "test") == 0)
-        {
-            exit(EXIT_SUCCESS);
-        }
-        else
-        {
-            read_file_by_line(argv[1], func);   	
-        }
+      if (strcmp (argv[1], "test") == 0)
+	{
+	  exit (EXIT_SUCCESS);
+	}
+      else
+	{
+	  read_file_by_line (argv[1], func);
+	}
     }
-    else
+  else
     {
-        printf("Informe o arquivo com o script\n");
+      printf ("Informe o arquivo com o script\n");
     }
 
-    exit(EXIT_SUCCESS);
+  exit (EXIT_SUCCESS);
 }

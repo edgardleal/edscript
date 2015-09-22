@@ -13,9 +13,21 @@ $(BIN)%.o: %.c
 setup:
 	[[ -d $(BIN) ]] || mkdir $(BIN)
 
-build: $(BIN)main.obj
-	gcc ./bin/main.o -o $(APP)
+build: $(BIN)main.o
+	$(CC) $(BIN)main.o -o $(APP)
 
 
-$(BIN)main.obj: main.c setup
+$(BIN)main.o: main.c setup
 	$(CC) -c main.c -o $@
+
+clean:
+	rm -f $(BIN)*.o $(APP)
+
+test.o: setup 
+	$(CC) -c test.c -o $(BIN)$@ 
+
+compile_test: test.o
+	$(CC) test.c $(BIN)test
+
+test: build compile_test
+	$(BIN)test
